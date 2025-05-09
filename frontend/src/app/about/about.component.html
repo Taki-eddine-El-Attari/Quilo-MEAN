@@ -18,7 +18,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 text-center">
-          <h2 class="text-dark mb-0">We are the Qurno, <br> Team of content writers and designers.</h2>
+          <h2 class="text-dark mb-0">We are the Quilo, <br> Team of content writers and designers.</h2>
         </div>
       </div>
       
@@ -55,28 +55,11 @@
             </h2>
     
             <div class="row gx-4 gy-5 gx-md-5 justify-content-center text-center">
-              
-              <div class="col-md-4 col-sm-6">
-                <a class="d-inline-block is-hoverable" href="author-single.html">
-                  <img class="img-fluid rounded" src="assets/assets/images/author/chris-impey.jpg" alt="Chris Impey" width="150" height="150">
-                  <h4 class="text-dark mt-4 mb-1">Chris Impey</h4>
-                  <p class="mb-0"><span class="fw-bold text-black">04</span> Published posts</p>
-                </a>
-              </div>
-              
-              <div class="col-md-4 col-sm-6">
-                <a class="d-inline-block is-hoverable" href="author-single.html">
-                  <img class="img-fluid rounded" src="assets/assets/images/author/emma-hazel.jpg" alt="Emma Hazel" width="150" height="150">
-                  <h4 class="text-dark mt-4 mb-1">Emma Hazel</h4>
-                  <p class="mb-0"><span class="fw-bold text-black">02</span> Published posts</p>
-                </a>
-              </div>
-              
-              <div class="col-md-4 col-sm-6">
-                <a class="d-inline-block is-hoverable" href="author-single.html">
-                  <img class="img-fluid rounded" src="assets/assets/images/author/thomas-macaulay.jpg" alt="Thomas Macaulay" width="150" height="150">
-                  <h4 class="text-dark mt-4 mb-1">Thomas Macaulay</h4>
-                  <p class="mb-0"><span class="fw-bold text-black">03</span> Published posts</p>
+              <div *ngFor="let author of authors" class="col-md-4 col-sm-6">
+                <a class="d-inline-block is-hoverable" [routerLink]="['/author', author._id]" title="{{ author.name }}">
+                  <img class="img-fluid rounded" [src]="'http://127.0.0.1:3000/getimage/' + author?.image" [alt]="author.name" width="150" height="150">
+                  <h4 class="text-dark mt-4 mb-1">{{ author.name }} {{ author.lastname }}</h4>
+                  <p class="mb-0"><span class="fw-bold text-black">{{ author.postCount || 0 }}</span> Published posts</p>
                 </a>
               </div>
             </div>
@@ -85,4 +68,3 @@
       </div>
     </div>
   </section>
-  

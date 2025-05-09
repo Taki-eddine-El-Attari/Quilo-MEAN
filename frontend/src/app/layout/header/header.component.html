@@ -5,8 +5,8 @@
       <div class="col-12">
         <nav class="navbar navbar-expand-lg navbar-light p-0">
           <!-- logo -->
-          <a class="navbar-brand font-weight-bold mb-0" [routerLink]="['/home']" title="Qurno">
-            <img class="img-fluid" width="110" height="35" src="assets/assets/images/logo.png" alt="Qurno">
+          <a class="navbar-brand font-weight-bold mb-0" [routerLink]="['/home']" title="Quilo">
+            <img class="img-fluid" width="100" src="assets/assets/images/logo.png" alt="Quilo">
           </a>
 
           <button class="search-toggle d-inline-block d-lg-none ms-auto me-1 me-sm-3" data-toggle="search" aria-label="Search Toggle">
@@ -21,24 +21,24 @@
 
           <div class="collapse navbar-collapse" id="navHeader">
             <ul class="navbar-nav mx-auto">
-              <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/home']">Home</a>
+              <li class="nav-item @@home">
+                <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
               </li>
               <li class="nav-item @@about">
-                <a class="nav-link" [routerLink]="['/about']">About</a>
+                <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active">About</a>
               </li>
           
               <li class="nav-item @@archive">
-                <a class="nav-link" [routerLink]="['/privacy']">Privacy</a>
+                <a class="nav-link" [routerLink]="['/privacy']" routerLinkActive="active">Privacy</a>
               </li>
               <li class="nav-item @@contact" *ngIf="_auth.isLoggedIn()">
-                <a class="nav-link" [routerLink]="['/author',_auth.getAuthor().id]">My account</a>
+                <a class="nav-link" [routerLink]="['/author',_auth.getAuthor().id]" routerLinkActive="active">My account</a>
               </li>
               <li class="nav-item @@contact" *ngIf="!_auth.isLoggedIn()">
-                <a class="nav-link" [routerLink]="['/login']">Login</a>
+                <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
               </li>
               <li class="nav-item @@contact" *ngIf="!_auth.isLoggedIn()">
-                <a class="nav-link" [routerLink]="['/register']">Register</a>
+                <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active">Register</a>
               </li>
               <li class="nav-item @@contact" *ngIf="_auth.isLoggedIn()">
                 <a class="nav-link" (click)="logout()">Logout</a>

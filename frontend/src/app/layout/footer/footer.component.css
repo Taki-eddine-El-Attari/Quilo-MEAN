@@ -1,0 +1,200 @@
+/* Modern Footer Styles */
+.blog-footer {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+  position: relative;
+  padding: 80px 0 30px;
+  margin-top: 60px;
+  color: #505050;
+}
+
+/* Footer content styling */
+.footer-content {
+  margin-bottom: 40px;
+}
+
+.footer-heading {
+  color: #152035;
+  font-family: "Crete Round", serif;
+  font-size: 20px;
+  position: relative;
+  margin-bottom: 25px;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.footer-heading::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #3a86ff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
+}
+
+.footer-about {
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Social links */
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(58, 134, 255, 0.1);
+  color: #3a86ff;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: #3a86ff;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+}
+
+/* Footer links */
+.footer-links {
+  padding: 0;
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #505050;
+  text-decoration: none;
+  font-size: 15px;
+  position: relative;
+  transition: all 0.3s ease;
+  padding-left: 15px;
+}
+
+.footer-links a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #3a86ff;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #3a86ff;
+  transform: translateX(5px);
+}
+
+.footer-links a:hover::before {
+  opacity: 1;
+}
+
+/* Newsletter section */
+.footer-newsletter-text {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.footer-subscribe-form .input-group {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.footer-subscribe-form .form-control {
+  border: 1px solid #e0e0e0;
+  border-right: none;
+  height: 46px;
+  font-size: 15px;
+  padding: 10px 15px;
+}
+
+.footer-subscribe-form .form-control:focus {
+  box-shadow: none;
+  border-color: #3a86ff;
+}
+
+.btn-subscribe {
+  background-color: #3a86ff;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-subscribe:hover {
+  background-color: #1e56a0;
+  transform: translateY(-1px);
+}
+
+/* Footer bottom */
+.footer-bottom {
+  padding-top: 30px;
+  border-top: 1px solid rgba(80, 80, 80, 0.1);
+}
+
+.copyright-text {
+  font-size: 14px;
+}
+
+.footer-bottom-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.footer-bottom-links a {
+  color: #505050;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: #3a86ff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .blog-footer {
+    padding-top: 60px;
+    margin-top: 40px;
+  }
+
+  .footer-bottom-links {
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .footer-heading {
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
+
+  .footer-bottom {
+    padding-top: 20px;
+  }
+}

@@ -1,38 +1,120 @@
 <!-- start of footer -->
-<footer>
-    <div class="container">
-      <div class="section">
-        <div class="row justify-content-center align-items-center">
-          <div class="col-xl-6 col-lg-8 col-md-10">
-            <!-- newsletter block -->
-            <div class="newsletter-block">
-              <h2 class="section-title text-center mb-4">Get latest posts delivered right to your inbox</h2>
-              <form action="#!" method="post" novalidate>
-                <div class="input-group flex-column flex-sm-row flex-nowrap flex-sm-nowrap">
-                  <input type="email" name="email" class="form-control required email w-auto text-center text-sm-start" placeholder="Your email address" aria-label="Subscription" required>
-                  <div class="input-group-append d-flex d-sm-inline-block mt-2 mt-sm-0 ms-0 w-auto">
-                    <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="input-group-text w-100 justify-content-center" aria-label="Subscription Button"><i class="ti ti-user-plus me-2"></i> Join today</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <!-- newsletter block -->
+<footer class="blog-footer">
+  <!-- Wave SVG separator has been removed -->
+
+  <div class="container">
+    <!-- Footer main content -->
+    <div class="footer-content">
+      <div class="row">
+        <!-- About/Brand column -->
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+          <h5 class="footer-heading">Quilo Blog</h5>
+          <p class="footer-about">
+            Explore the latest insights, tutorials, and trends in technology,
+            design, and digital innovation.
+          </p>
+
+          <!-- Social media icons -->
+          <div class="social-links mt-4">
+            <a href="#" class="social-icon" aria-label="Facebook"
+              ><i class="ti ti-brand-facebook"></i
+            ></a>
+            <a href="#" class="social-icon" aria-label="Twitter"
+              ><i class="ti ti-brand-twitter"></i
+            ></a>
+            <a href="#" class="social-icon" aria-label="Instagram"
+              ><i class="ti ti-brand-instagram"></i
+            ></a>
+            <a href="#" class="social-icon" aria-label="LinkedIn"
+              ><i class="ti ti-brand-linkedin"></i
+            ></a>
+            <a href="#" class="social-icon" aria-label="GitHub"
+              ><i class="ti ti-brand-github"></i
+            ></a>
           </div>
         </div>
-      </div>
-      <div class="pb-5">
-        <div class="row g-2 g-lg-4 align-items-center">
-          <div class="col-lg-6 text-center text-lg-start">
-            <p class="mb-0 copyright-text content">&copy;{{currentYear}} Qurno. All rights reserved.</p>
-          </div>
-          <div class="col-lg-6 text-center text-lg-end">
-            <ul class="list-inline footer-menu">
-              <li class="list-inline-item m-0"><a href="privacy.html">Privacy Policy</a></li>
-              <li class="list-inline-item m-0"><a href="404-page.html">404 Page</a></li>
-            </ul>
-          </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+          <h5 class="footer-heading">Explore</h5>
+          <ul class="footer-links">
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/articles">All Articles</a></li>
+            <li><a routerLink="/about">About Us</a></li>
+            <li><a routerLink="/author">Authors</a></li>
+            <li><a routerLink="/privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Authors - Protected section -->
+        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+          <h5 class="footer-heading">For Authors</h5>
+          <ul class="footer-links">
+            <!-- Only show for authenticated users -->
+            <li *ngIf="_auth.isLoggedIn()">
+              <a routerLink="/create">Create Article</a>
+            </li>
+            <li *ngIf="_auth.isLoggedIn()">
+              <a [routerLink]="['/author', _auth.getAuthor().id]"
+                >Author Dashboard</a
+              >
+            </li>
+
+            <!-- Only show for non-authenticated users -->
+            <li *ngIf="!_auth.isLoggedIn()">
+              <a routerLink="/login">Login</a>
+            </li>
+            <li *ngIf="!_auth.isLoggedIn()">
+              <a routerLink="/register">Register</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-lg-4 col-md-6">
+          <h5 class="footer-heading">Newsletter</h5>
+          <p class="footer-newsletter-text">
+            Stay updated with our latest articles and news.
+          </p>
+
+          <form class="footer-subscribe-form">
+            <div class="input-group">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Enter your email"
+                required
+              />
+              <button
+                class="btn btn-subscribe"
+                type="submit"
+                aria-label="Subscribe"
+              >
+                <i class="ti ti-mail me-1"></i> Subscribe
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </footer>
-  <!-- end of footer -->
+
+    <!-- Footer bottom -->
+    <div class="footer-bottom">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="copyright-text mb-0">
+            &copy; {{ currentYear }} Quilo Blog. All rights reserved.
+          </p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <ul class="footer-bottom-links">
+            <li><a routerLink="/privacy">Terms</a></li>
+            <li><a routerLink="/privacy">Privacy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- end of footer -->

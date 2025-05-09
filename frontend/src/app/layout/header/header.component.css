@@ -3,3 +3,14 @@
 .nav-link {
   cursor: pointer;
 }
+.nav-link.active {
+  color: #3a86ff !important;
+  font-weight: bold;
+}
+.img-fluid {
+  padding-bottom: 20px;
+}
+.navbar-brand {
+  margin: 0;
+  padding: 0;
+}

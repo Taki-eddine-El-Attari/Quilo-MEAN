@@ -16,14 +16,14 @@
           </div>
           <div class="col-lg-9 col-md-12">
             <p class="mb-2">
-              <span class="fw-bold text-black">03</span> Published posts
+              <span class="fw-bold text-black">{{ author?.postCount || 0 }}</span> Published posts
             </p>
             <h1 class="h3 text-dark mb-3">
               {{ author?.name + " " + author?.lastname }}
             </h1>
             <div class="content">
               <p>{{ author?.about }}</p>
-              <div class="mb-3">
+              <div class="mb-3" *ngIf="_auth.isLoggedIn() && _auth.getAuthor().id === author?._id">
                 <button class="btn btn-auth w-30" routerLink="/create">
                   Create new article
                 </button>
@@ -39,7 +39,7 @@
 <div class="container">
   <div class="col-12 text-center">
     <h2 class="section-title">
-      <span>My blogs</span>
+      <span>{{ _auth.isLoggedIn() && _auth.getAuthor().id === author?._id ? 'My blogs' : 'His/Her blogs' }}</span>
     </h2>
   </div>
   <div class="row gy-5 gx-4 g-xl-5">
@@ -92,7 +92,7 @@
       </article>
     </div>
     <div class="container" *ngIf="articles && articles.length === 0">
-      <p>Aucun article trouvé.</p>
+      <p>No articles found.</p>
     </div>
   </div>
 </div>

@@ -6,6 +6,12 @@
             <h3 class="h1 mb-4 post-title">{{ article.title }}</h3>
   
             <ul class="card-meta list-inline mb-2">
+              <li class="list-inline-item mt-2" *ngIf="author">
+                <a [routerLink]="['/author', article.idAuthor]" class="card-meta-author" [title]="'Read all posts by - ' + author.name">
+                  <img class="w-auto" [src]="'http://127.0.0.1:3000/getimage/' + author.image" [alt]="author.name" width="26" height="26">
+                   by <span>{{ author.name }}</span>
+                </a>
+              </li>
               <li class="list-inline-item mt-2">
                 <i class="ti ti-clock"></i>
                 <span>{{ article.date | date }}</span>

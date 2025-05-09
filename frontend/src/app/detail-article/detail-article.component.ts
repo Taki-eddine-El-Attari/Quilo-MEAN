@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../services/article.service';
+import { AuthService } from '../services/auth.service'; 
 
 @Component({
   selector: 'app-detail-article',
@@ -11,18 +12,29 @@ export class DetailArticleComponent implements OnInit {
 
   id: any;
   article: any;
+  author: any;
 
-  constructor(private act: ActivatedRoute,@Inject(ArticleService) private data: ArticleService) {}
-  // hna kan injectiw l article service bach n9dro ndirou requests l api
-  
+  constructor(private act: ActivatedRoute,@Inject(ArticleService) private data: ArticleService,private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.id = this.act.snapshot.paramMap.get('id'); // hna kan jibo l id mn l url
-    this.data.getArticleById(this.id).subscribe((res) => { // hna kan ndirou request l api bach n9drou l article  
-      this.article = res; // hna kan khzno l result f l variable article
-    },
-    (err) => {
-      console.log(err); // hna kan chofiw ila kan chi erreur
-    });
+    this.id = this.act.snapshot.paramMap.get('id'); // kanjibo l id mn l url
+    this.data.getArticleById(this.id).subscribe( // kanjibo l article mn l api 
+      (res) => {
+        this.article = res; // n7et l article f variable
+        if(this.article.idAuthor) {
+          this.authService.getAuthorId(this.article.idAuthor).subscribe( // kanjibo l author mn l api
+            (authorData: any) => {
+              this.author = authorData; // n7et l author f variable
+            },
+            (err) => {
+              console.log("Error fetching author:", err);
+            }
+          );
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

@@ -15,13 +15,13 @@
             <a
               class="d-block"
               [routerLink]="['/article', item._id]"
-              title="The AGI hype train is running out of steam"
+              title="{{ item.title }}"
             >
               <div class="post-image position-relative blog-image-container">
                 <img
                   class="w-100 h-auto rounded blog-image"
                   [src]="'http://127.0.0.1:3000/getimage/' + item.image"
-                  alt="The AGI hype train is running out of steam"
+                  alt="{{ item.title }}"
                   width="970"
                   height="500"
                 />
@@ -37,7 +37,7 @@
             <a
               class="d-block"
               [routerLink]="['/article', item._id]"
-              title="The AGI hype train is running out of steam"
+              title="{{ item.title }}"
             >
               <h3 class="mb-3 post-title">
                 {{ item.title }}
@@ -47,6 +47,22 @@
           </div>
           <div class="card-footer border-top-0 bg-transparent p-0">
             <ul class="card-meta list-inline">
+              <li class="list-inline-item mt-2" *ngIf="item.idAuthor && authorsDict[item.idAuthor]">
+                <a
+                  [routerLink]="['/author', item.idAuthor]"
+                  class="card-meta-author"
+                  [title]="'Read all posts by - ' + authorsDict[item.idAuthor]?.name"
+                >
+                  <img
+                    class="w-auto"
+                    [src]="'http://127.0.0.1:3000/getimage/' + authorsDict[item.idAuthor]?.image"
+                    [alt]="authorsDict[item.idAuthor]?.name"
+                    width="26"
+                    height="26"
+                  />
+                  by <span>{{ authorsDict[item.idAuthor]?.name }}</span>
+                </a>
+              </li>
               <li class="list-inline-item mt-2">
                 <ul class="card-meta-tag list-inline">
                   <li
