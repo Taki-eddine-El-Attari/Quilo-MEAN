@@ -1,0 +1,39 @@
+<section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="mb-5">
+            <h3 class="h1 mb-4 post-title">{{ article.title }}</h3>
+  
+            <ul class="card-meta list-inline mb-2">
+              <li class="list-inline-item mt-2">
+                <i class="ti ti-clock"></i>
+                <span>{{ article.date | date }}</span>
+              </li>
+              <li class="list-inline-item mt-2">—</li>
+              <li class="list-inline-item mt-2">
+                <i class="ti ti-calendar-event"></i>
+                <span>17 Nov, 2021</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="mb-5 text-center">
+            <img class="w-100 h-auto rounded" [src]="'http://127.0.0.1:3000/getimage/' + article.image" alt="What does it take to create an object that travels at 1% the speed of light?" width="970" height="500">
+          </div>
+        </div>
+        
+        <div class="col-lg-8 post-content-block order-0 order-lg-2">
+          <div class="content" [innerHTML]="article.content">
+
+            </div>
+  
+          <ul class="post-meta-tag list-unstyled list-inline mt-5">
+            <li class="list-inline-item">Tags: </li>
+            <li class="list-inline-item" *ngFor="let t of article.tags"><a class="bg-white">{{ t }}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>

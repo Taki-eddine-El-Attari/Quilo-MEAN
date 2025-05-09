@@ -1,0 +1,90 @@
+<section class="section-sm">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="text-center mb-5">
+            <h2 class="section-title">
+              <span>Login</span>
+            </h2>
+            <p>Welcome back to your professional blog account</p>
+          </div>
+
+          <div class="auth-form">
+            <a class="navbar-brand font-weight-bold d-block text-center pb-3" [routerLink]="['/home']" title="Qurno">
+              <img class="img-fluid" width="110" height="35" src="assets/assets/images/logo.png" alt="Qurno">
+            </a>
+            <form action="#" method="POST">
+              <div class="mb-4">
+                <label for="email" class="form-label">Email address</label>
+                <input
+                  name="email"
+                  [(ngModel)]="author.email"
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="name@example.com"
+                />
+              </div>
+              <div class="mb-3">
+                <div
+                  class="d-flex justify-content-between align-items-center"
+                >
+                  <label for="password" class="form-label">Password</label>
+                  <a href="#" class="text-primary small">Forgot password?</a>
+                </div>
+                <input
+                  name="password"
+                  [(ngModel)]="author.password"
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Enter your password"
+                />
+              </div>
+              <div class="mb-4">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="rememberMe"
+                  />
+                  <label class="form-check-label" for="rememberMe">
+                    Remember me
+                  </label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <button (click)="login()" type="submit" class="btn btn-auth w-100">
+                  Login
+                </button>
+              </div>
+            </form>
+
+            <div class="auth-divider">
+              <span>or login with</span>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-6">
+                <a href="#" class="social-auth-btn w-100">
+                  <i class="ti ti-brand-google"></i> Google
+                </a>
+              </div>
+              <div class="col-6">
+                <a href="#" class="social-auth-btn w-100">
+                  <i class="ti ti-brand-facebook"></i> Facebook
+                </a>
+              </div>
+            </div>
+
+            <div class="mt-4 text-center">
+              <p>
+                Don't have an account? <a href="register">Register</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

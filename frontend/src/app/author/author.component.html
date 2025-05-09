@@ -1,0 +1,98 @@
+<section class="page-header section-sm">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div
+          class="row g-4 g-lg-5 text-center text-lg-start justify-content-center justify-content-lg-start"
+        >
+          <div class="col-lg-3 col-md-4 col-sm-5 col-6">
+            <img
+              class="img-fluid rounded"
+              [src]="'http://127.0.0.1:3000/getimage/' + author?.image"
+              alt="Thomas Macaulay"
+              width="250"
+              height="250"
+            />
+          </div>
+          <div class="col-lg-9 col-md-12">
+            <p class="mb-2">
+              <span class="fw-bold text-black">03</span> Published posts
+            </p>
+            <h1 class="h3 text-dark mb-3">
+              {{ author?.name + " " + author?.lastname }}
+            </h1>
+            <div class="content">
+              <p>{{ author?.about }}</p>
+              <div class="mb-3">
+                <button class="btn btn-auth w-30" routerLink="/create">
+                  Create new article
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="col-12 text-center">
+    <h2 class="section-title">
+      <span>My blogs</span>
+    </h2>
+  </div>
+  <div class="row gy-5 gx-4 g-xl-5">
+    <div *ngFor="let item of articles" class="col-lg-6">
+      <article class="card post-card h-100 border-0 bg-transparent">
+        <div class="card-body">
+          <a
+            class="d-block"
+            [routerLink]="['/article', item._id]"
+            title="The AGI hype train is running out of steam"
+          >
+            <div class="post-image position-relative blog-image-container">
+              <img
+                class="w-100 h-auto rounded blog-image"
+                [src]="'http://127.0.0.1:3000/getimage/' + item.image"
+                alt="The AGI hype train is running out of steam"
+                width="970"
+                height="500"
+              />
+            </div>
+          </a>
+          <ul class="card-meta list-inline mb-3">
+            <li class="list-inline-item mt-2">
+              <i class="ti ti-calendar-event"></i>
+              <span>{{ item.date | date }}</span>
+            </li>
+          </ul>
+          <a
+            class="d-block"
+            [routerLink]="['/article', item._id]"
+            title="The AGI hype train is running out of steam"
+          >
+            <h3 class="mb-3 post-title">
+              {{ item.title }}
+            </h3>
+          </a>
+          <p>{{ item.description }}</p>
+        </div>
+        <div class="card-footer border-top-0 bg-transparent p-0">
+          <ul class="card-meta list-inline">
+            <li class="list-inline-item mt-2">
+              <ul class="card-meta-tag list-inline">
+                <li class="list-inline-item small" *ngFor="let t of item.tags">
+                  <a>{{ t }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="container" *ngIf="articles && articles.length === 0">
+      <p>Aucun article trouvé.</p>
+    </div>
+  </div>
+</div>

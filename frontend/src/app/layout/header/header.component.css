@@ -1,0 +1,5 @@
+.nav-link[routerLink],
+.nav-link[click],
+.nav-link {
+  cursor: pointer;
+}

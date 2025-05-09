@@ -1,0 +1,99 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <h2 class="section-title text-center mb-4">
+        <span>Create Article</span>
+      </h2>
+
+      <form>
+        <div class="mb-4">
+          <label for="articleTitle" class="form-label">Title</label>
+          <input
+            name="title"
+            [(ngModel)]="article.title"
+            type="text"
+            class="form-control form-control-lg"
+            id="articleTitle"
+            placeholder="Enter your article title"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Tags</label>
+          <div class="mb-2">
+            <div class="tag-item" *ngFor="let t of article.tags; let i = index">
+              {{ t }}
+              <i class="ti ti-x" (click)="article.tags.splice(i, 1)"></i>
+            </div>
+          </div>
+          <div class="input-group">
+            <input
+              [(ngModel)]="tag"
+              name="tags"
+              type="text"
+              class="form-control"
+              placeholder="Add tag"
+            />
+            <button
+              class="btn btn-primary"
+              (click)="article.tags.push(tag); tag = ''"
+              type="button"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Featured Image</label>
+          <div class="dropzone" (click)="fileInput.click()">
+            <input type="file" (change)="select($event)" hidden #fileInput />
+            <div *ngIf="!imagePreview">
+              <i class="ti ti-cloud-upload"></i>
+              <h5>Drop your image here</h5>
+              <p class="text-muted">or click to browse</p>
+            </div>
+            <div *ngIf="imagePreview" class="mt-3">
+              <img [src]="imagePreview" alt="Preview" class="img-fluid" />
+              <p>{{ imageName }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="articleDescription" class="form-label"
+            >Short Description</label
+          >
+          <textarea
+            name="description"
+            [(ngModel)]="article.description"
+            class="form-control"
+            id="articleDescription"
+            rows="3"
+            placeholder="Brief summary of your article"
+          ></textarea>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Content</label>
+          <div class="editor-container custom-angular-editor">
+            <angular-editor
+            name="content"
+            [placeholder]="'Start writing your amazing article here...'"
+            [(ngModel)]="article.content"
+          ></angular-editor>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2 mb-5">
+          <button (click)="create()" type="submit" class="btn btn-primary">
+            Publish
+          </button>
+          <button type="button" class="btn btn-outline-primary">
+            Save Draft
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+.editor-container {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+.tag-item {
+  background-color: rgba(58, 134, 255, 0.1);
+  color: #1e56a0;
+  border-radius: 20px;
+  padding: 5px 15px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+}
+.tag-item i {
+  margin-left: 5px;
+  cursor: pointer;
+}
+.tag-item:hover {
+  background-color: rgba(58, 134, 255, 0.2);
+}
+.dropzone {
+  border: 2px dashed #d1d5db;
+  border-radius: 5px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.dropzone:hover {
+  border-color: #3a86ff;
+}
+.dropzone i {
+  font-size: 48px;
+  color: #3a86ff;
+  margin-bottom: 15px;
+}
+.dropzone img {
+  max-width: 100%;
+  max-height: 300px; /* Adjust maximum height to prevent overflow */
+  object-fit: contain;
+}
+.editor-toolbar {
+  padding: 10px;
+  background-color: #f8fbff;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #eee;
+}
+.editor-toolbar button {
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  color: #505050;
+}
+.editor-toolbar button:hover {
+  background-color: rgba(58, 134, 255, 0.1);
+  color: #3a86ff;
+}
+.editor-content {
+  min-height: 300px;
+  padding: 15px;
+}
+#articleContent {
+  height: 270px;
+}
+
+.custom-angular-editor {
+  padding: 8px;
+}
+
+.custom-angular-editor ::ng-deep .angular-editor-textarea {
+  min-height: 350px !important;
+  padding: 15px !important;
+  font-size: 16px;
+  line-height: 1.6;
+  border: 2px solid transparent !important;
+  transition: border-color 0.7s ease-in-out, box-shadow 0.3s ease;
+  padding-top: 10px !important;
+}
+
+.custom-angular-editor:hover ::ng-deep .angular-editor-textarea {
+  border-color: #3a86ff !important;
+}
+
+.custom-angular-editor ::ng-deep .angular-editor-textarea:focus {
+  border-color: #3a86ff !important;
+  box-shadow: 0 5px 15px rgba(58, 134, 255, 0.1) !important;
+  outline: none !important;
+}
+
+.custom-angular-editor ::ng-deep .angular-editor-toolbar {
+  border-radius: 8px 8px 0 0 !important;
+  background-color: #f8fafb !important;
+  border-bottom: 1px solid rgba(58, 134, 255, 0.1) !important;
+  padding: 8px !important;
+}
+
+.custom-angular-editor ::ng-deep .angular-editor-button {
+  transition: all 0.2s ease;
+}
+
+.custom-angular-editor ::ng-deep .angular-editor-button:hover {
+  background-color: rgba(58, 134, 255, 0.1) !important;
+  color: #3a86ff !important;
+}

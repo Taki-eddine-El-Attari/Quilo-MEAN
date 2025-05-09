@@ -1,0 +1,162 @@
+<section class="section-sm">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="text-center mb-5">
+          <h2 class="section-title">
+            <span>Create Account</span>
+          </h2>
+          <p>Join our community of writers and readers</p>
+        </div>
+
+        <div class="auth-form">
+          <a class="navbar-brand font-weight-bold d-block text-center pb-5" [routerLink]="['/home']" title="Qurno">
+            <img class="img-fluid" width="110" height="35" src="assets/assets/images/logo.png" alt="Qurno">
+          </a>
+          <form action="#" method="POST">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input
+                    name="firstName"
+                    [(ngModel)]="author.name"
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    placeholder="John"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="lastName" class="form-label">Last Name</label>
+                  <input
+                    name="lastName"
+                    [(ngModel)]="author.lastname"
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    placeholder="Doe"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    name="email"
+                    [(ngModel)]="author.email"
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="your@email.com"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    name="password"
+                    [(ngModel)]="author.password"
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="••••••••"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="confirmPassword" class="form-label"
+                    >Confirm Password</label
+                  >
+                  <input
+                    name="passwordConfirm"
+                    [(ngModel)]="author.passwordConfirm"
+                    type="password"
+                    class="form-control"
+                    id="confirmPassword"
+                    placeholder="••••••••"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="image" class="form-label">Profile Image</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="image"
+                    (change)="select($event)"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="about" class="form-label">About</label>
+                  <textarea
+                    name="about"
+                    [(ngModel)]="author.about"
+                    class="form-control"
+                    id="about"
+                    rows="4"
+                    placeholder="Tell us about yourself"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-check mb-4">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="termsCheck"
+                  />
+                  <label class="form-check-label" for="termsCheck">
+                    I agree to the
+                    <a [routerLink]="['/privacy']">Terms of Service</a> and
+                    <a [routerLink]="['/privacy']">Privacy Policy</a>
+                  </label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button
+                  (click)="register()"
+                  type="submit"
+                  class="btn btn-auth w-100"
+                >
+                  Create Account
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="auth-divider">
+            <span>or register with</span>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-6">
+              <a href="#" class="social-auth-btn w-100">
+                <i class="ti ti-brand-google"></i> Google
+              </a>
+            </div>
+            <div class="col-6">
+              <a href="#" class="social-auth-btn w-100">
+                <i class="ti ti-brand-facebook"></i> Facebook
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-4 text-center">
+            <p>
+              Already have an account? <a [routerLink]="['/login']">Login</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

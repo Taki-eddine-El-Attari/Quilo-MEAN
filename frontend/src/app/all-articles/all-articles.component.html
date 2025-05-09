@@ -1,0 +1,67 @@
+
+<section>
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1 class="section-title h2 mb-5">
+              <span>All posts</span>
+            </h1>
+          </div>
+    </div>
+    <div class="row gy-5 gx-4 g-xl-5">
+      <div *ngFor="let item of articles" class="col-lg-6">
+        <article class="card post-card h-100 border-0 bg-transparent">
+          <div class="card-body">
+            <a
+              class="d-block"
+              [routerLink]="['/article', item._id]"
+              title="The AGI hype train is running out of steam"
+            >
+              <div class="post-image position-relative blog-image-container">
+                <img
+                  class="w-100 h-auto rounded blog-image"
+                  [src]="'http://127.0.0.1:3000/getimage/' + item.image"
+                  alt="The AGI hype train is running out of steam"
+                  width="970"
+                  height="500"
+                />
+              </div>
+            </a>
+            <ul class="card-meta list-inline mb-3">
+              <li class="list-inline-item mt-2">
+                <i class="ti ti-calendar-event"></i>
+                <span>{{ item.date | date }}</span>
+              </li>
+            </ul>
+
+            <a
+              class="d-block"
+              [routerLink]="['/article', item._id]"
+              title="The AGI hype train is running out of steam"
+            >
+              <h3 class="mb-3 post-title">
+                {{ item.title }}
+              </h3>
+            </a>
+            <p>{{ item.description }}</p>
+          </div>
+          <div class="card-footer border-top-0 bg-transparent p-0">
+            <ul class="card-meta list-inline">
+              <li class="list-inline-item mt-2">
+                <ul class="card-meta-tag list-inline">
+                  <li
+                    class="list-inline-item small"
+                    *ngFor="let t of item.tags"
+                  >
+                    <a>{{ t }}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- blog warpper end -->
