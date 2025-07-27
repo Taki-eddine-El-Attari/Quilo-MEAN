@@ -36,4 +36,16 @@ export class AuthService {
   getAllAuthors() {
     return this.http.get(this.url + 'getAll'); // Fetch all authors from the API
   }
+
+  deleteAccount(id: any) {
+    return this.http.delete(this.url + 'delete/' + id); // Pour supprimer un compte
+  }
+
+  updateAuthor(id: any, author: any) {
+    return this.http.put(this.url + 'update/' + id, author); // Pour mettre à jour un auteur
+  }
+
+  logout() {
+    localStorage.removeItem('token'); // Pour déconnecter l'utilisateur
+  }
 }

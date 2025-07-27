@@ -47,9 +47,19 @@ router.post('/login', async (req, res) => { // N3rfu l route dyal POST /login
         }
         const formPassword = String(data.password); // N3rfu l password li jena f l body
         const hashedPassword = String(author.password); // N3rfu l password li 3ndou f MongoDB
-        let valid = bcrypt.compareSync(formPassword, hashedPassword); // N9arnou l password li jena f l body m3a l password li 3ndou f MongoDB
+        
+        let valid = false;
+        // Check if password is hashed (starts with $2b$ or similar bcrypt format)
+        if (hashedPassword.startsWith('$2b$') || hashedPassword.startsWith('$2a$') || hashedPassword.startsWith('$2y$')) {
+            // Password is hashed, use bcrypt compare
+            valid = bcrypt.compareSync(formPassword, hashedPassword);
+        } else {
+            // Password is not hashed (legacy user), compare directly
+            valid = formPassword === hashedPassword;
+        }
+        
         if (!valid){ // Ila ma kanch l password sahih, n3tiw l response 400 w n3tiw chi message dyal khata
-            return res.status(400).json({ message: 'Invalid credentials' }); 
+            return res.status(400).json({ message: 'Invalid credentials' });
         }else{
             let payload = { // N3rfu l payload li ghadi n7to f l token
                 id: author._id, // N7to l id dyal author li 3ndou l email w l password s7i7e

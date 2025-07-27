@@ -2,11 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ArticleService {
-
-  constructor(private http: HttpClient) { } // hna kan injectiw l http client bach n9dro ndirou requests l api
+  constructor(private http: HttpClient) {} // hna kan injectiw l http client bach n9dro ndirou requests l api
 
   url = 'http://127.0.0.1:3000/articles/'; // corrected API URL port & host
 
@@ -16,7 +15,7 @@ export class ArticleService {
 
   getAll() {
     return this.http.get(this.url + 'getAll'); // hna l url dyal getall
-  } 
+  }
 
   getArticleByIdAuthor(id: any) {
     return this.http.get(this.url + 'getByAuthor/' + id); // hna l url dyal getbyidauthor
@@ -24,5 +23,13 @@ export class ArticleService {
 
   getArticleById(id: any) {
     return this.http.get(this.url + 'getById/' + id); // hna l url dyal getbyid
+  }
+
+  deleteArticle(id: any) {
+    return this.http.delete(this.url + 'delete/' + id); // hna l url dyal delete
+  }
+
+  updateArticle(id: any, article: any) {
+    return this.http.put(this.url + 'update/' + id, article); // hna l url dyal update
   }
 }

@@ -9,6 +9,17 @@
   transform: translateY(-2px);
 }
 
+/* Style d'image de profil */
+.profile-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+  border: 2px solid #f1f1f1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 /* Styles de cartes de blog */
 .blog-image-container {
   height: 280px;
@@ -112,4 +123,98 @@
 
 .card.post-card .card-footer {
   padding: 0 20px 15px 20px !important;
+}
+
+/* Styles pour la modale de confirmation */
+.modal-backdrop-custom {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-custom {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header-custom {
+  border-bottom: 1px solid #eaeaea;
+  padding: 15px 20px;
+  background-color: #fff;
+}
+
+.modal-title-custom {
+  color: #333;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.modal-body-custom {
+  padding: 25px 20px;
+  text-align: center;
+}
+
+.modal-warning-icon {
+  font-size: 40px;
+  color: #3a86ff;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.modal-question {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.modal-warning-text {
+  font-size: 14px;
+  color: #777;
+  margin-top: 5px;
+}
+
+.modal-footer-custom {
+  border-top: 1px solid #eaeaea;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-cancel {
+  background-color: #3a86ff;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 10px 24px;
+  border: none;
+  transition: all 0.2s ease;
+  min-width: 120px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cancel:hover {
+  background-color: #1e56a0;
+}
+
+.btn-delete {
+  background-color: #dc3545 !important;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 120px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-delete:hover {
+  background-color: #c82333 !important;
+  transform: translateY(-1px);
+}
+.btn-delete-account {
+  margin-top: -24px;
 }

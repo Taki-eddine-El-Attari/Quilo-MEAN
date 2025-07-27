@@ -11,6 +11,8 @@ import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AuthGuard } from './services/auth.guard';
 import { AllArticlesComponent } from './all-articles/all-articles.component';
+import { UpdateArticleComponent } from './update-article/update-article.component';
+import { UpdateAuthorComponent } from './update-author/update-author.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'} ,
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path: 'article/:id', component: DetailArticleComponent},
   {path: 'articles', component: AllArticlesComponent},
   {path: 'create', canActivate:[AuthGuard] , component: CreateArticleComponent}, // bach ne7miw l route dyal create article, khassna nkono logged in
+  {path: 'update/:id', canActivate:[AuthGuard], component: UpdateArticleComponent}, // Nouvelle route sécurisée pour la mise à jour
+  {path: 'edit-profile', canActivate:[AuthGuard], component: UpdateAuthorComponent}, // Route sécurisée pour la mise à jour du profil
   {path: 'about', component: AboutComponent},
   {path: 'privacy', component: PrivacyComponent},
   {path: 'author/:id', component: AuthorComponent},

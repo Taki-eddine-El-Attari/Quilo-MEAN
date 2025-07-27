@@ -15,6 +15,16 @@
   transform: scale(1.05);
 }
 
+/* Style pour l'image miniature de l'auteur */
+.author-small-image {
+  width: 26px;
+  height: 26px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  border: 1px solid #f1f1f1;
+}
+
 .card.post-card {
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   margin-bottom: 5px;

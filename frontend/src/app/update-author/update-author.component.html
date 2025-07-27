@@ -1,0 +1,95 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <h2 class="section-title text-center mb-4">
+        <span>Edit Profile</span>
+      </h2>
+
+      <form>
+        <div class="mb-4">
+          <label for="firstName" class="form-label">First Name</label>
+          <input
+            name="name"
+            [(ngModel)]="author.name"
+            type="text"
+            class="form-control form-control-lg"
+            id="firstName"
+            placeholder="Enter your first name"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input
+            name="lastname"
+            [(ngModel)]="author.lastname"
+            type="text"
+            class="form-control form-control-lg"
+            id="lastName"
+            placeholder="Enter your last name"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="form-label">Email</label>
+          <input
+            name="email"
+            [(ngModel)]="author.email"
+            type="email"
+            class="form-control form-control-lg"
+            id="email"
+            placeholder="Enter your email"
+            readonly
+          />
+          <small class="form-text text-muted">Email cannot be changed.</small>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Profile image</label>
+          <div class="dropzone" (click)="fileInput.click()">
+            <input type="file" (change)="select($event)" hidden #fileInput />
+            <div *ngIf="!imagePreview">
+              <i class="ti ti-cloud-upload"></i>
+              <h5>Drop your image here</h5>
+              <p class="text-muted">or click to browse</p>
+            </div>
+            <div *ngIf="imagePreview" class="mt-3">
+              <img
+                [src]="imagePreview"
+                alt="Preview"
+                class="img-fluid"
+                style="max-height: 200px"
+              />
+              <p>{{ imageName }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="about" class="form-label">About</label>
+          <textarea
+            name="about"
+            [(ngModel)]="author.about"
+            class="form-control"
+            id="about"
+            rows="5"
+            placeholder="Tell us about yourself"
+          ></textarea>
+        </div>
+
+        <div class="d-flex gap-2 mb-5">
+          <button (click)="update()" type="button" class="btn btn-primary">
+            <i class="ti ti-device-floppy"></i> Save Changes
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            [routerLink]="['/author', _auth.getAuthor().id]"
+          >
+            <i class="ti ti-x"></i> Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

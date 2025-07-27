@@ -21,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AllArticlesComponent } from './all-articles/all-articles.component';
+import { UpdateArticleComponent } from './update-article/update-article.component';
+import { UpdateAuthorComponent } from './update-author/update-author.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { AllArticlesComponent } from './all-articles/all-articles.component';
     CoverComponent,
     BlogListComponent,
     AllArticlesComponent,
+    UpdateArticleComponent,
+    UpdateAuthorComponent,
   ],
   imports: [
     BrowserModule,

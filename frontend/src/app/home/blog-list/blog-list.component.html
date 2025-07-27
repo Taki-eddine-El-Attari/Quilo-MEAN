@@ -19,11 +19,9 @@
             >
               <div class="post-image position-relative blog-image-container">
                 <img
-                  class="w-100 h-auto rounded blog-image"
+                  class="rounded blog-image"
                   [src]="'http://127.0.0.1:3000/getimage/' + item.image"
                   alt="{{ item.title }}"
-                  width="970"
-                  height="500"
                 />
               </div>
             </a>
@@ -47,18 +45,24 @@
           </div>
           <div class="card-footer border-top-0 bg-transparent p-0">
             <ul class="card-meta list-inline">
-              <li class="list-inline-item mt-2" *ngIf="item.idAuthor && authorsDict[item.idAuthor]">
+              <li
+                class="list-inline-item mt-2"
+                *ngIf="item.idAuthor && authorsDict[item.idAuthor]"
+              >
                 <a
                   [routerLink]="['/author', item.idAuthor]"
                   class="card-meta-author"
-                  [title]="'Read all posts by - ' + authorsDict[item.idAuthor]?.name"
+                  [title]="
+                    'Read all posts by - ' + authorsDict[item.idAuthor]?.name
+                  "
                 >
                   <img
-                    class="w-auto"
-                    [src]="'http://127.0.0.1:3000/getimage/' + authorsDict[item.idAuthor]?.image"
+                    class="author-small-image"
+                    [src]="
+                      'http://127.0.0.1:3000/getimage/' +
+                      authorsDict[item.idAuthor]?.image
+                    "
                     [alt]="authorsDict[item.idAuthor]?.name"
-                    width="26"
-                    height="26"
                   />
                   by <span>{{ authorsDict[item.idAuthor]?.name }}</span>
                 </a>

@@ -1,13 +1,29 @@
-.mb-5.text-center {
+/* Container pour l'image principale de l'article */
+.article-image-container {
   height: 500px;
   overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.mb-5.text-center img {
+/* Style pour l'image principale */
+.article-main-image {
   width: 100%;
   height: 100%;
+  object-fit: cover; /* Couvre tout l'espace disponible */
+  object-position: center; /* Centre l'image horizontalement et verticalement */
+}
+
+/* Style pour l'image de l'auteur en miniature */
+.author-small-image {
+  width: 26px;
+  height: 26px;
   object-fit: cover;
   object-position: center;
+  border-radius: 50%;
+  border: 1px solid #f1f1f1;
 }
 
 .post-meta-tag .list-inline-item a {

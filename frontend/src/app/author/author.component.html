@@ -7,25 +7,40 @@
         >
           <div class="col-lg-3 col-md-4 col-sm-5 col-6">
             <img
-              class="img-fluid rounded"
+              class="profile-image"
               [src]="'http://127.0.0.1:3000/getimage/' + author?.image"
-              alt="Thomas Macaulay"
-              width="250"
-              height="250"
+              alt="{{ author?.name + ' ' + author?.lastname }}"
             />
           </div>
           <div class="col-lg-9 col-md-12">
             <p class="mb-2">
-              <span class="fw-bold text-black">{{ author?.postCount || 0 }}</span> Published posts
+              <span class="fw-bold text-black">{{
+                author?.postCount || 0
+              }}</span>
+              Published posts
             </p>
             <h1 class="h3 text-dark mb-3">
               {{ author?.name + " " + author?.lastname }}
             </h1>
             <div class="content">
               <p>{{ author?.about }}</p>
-              <div class="mb-3" *ngIf="_auth.isLoggedIn() && _auth.getAuthor().id === author?._id">
-                <button class="btn btn-auth w-30" routerLink="/create">
-                  Create new article
+              <div
+                class="mb-3"
+                *ngIf="
+                  _auth.isLoggedIn() && _auth.getAuthor().id === author?._id
+                "
+              >
+                <button class="btn btn-auth w-30 me-2" routerLink="/create">
+                  <i class="ti ti-plus"></i> Create new article
+                </button>
+                <button class="btn btn-success me-2" routerLink="/edit-profile">
+                  <i class="ti ti-edit"></i> Edit Profile
+                </button>
+                <button
+                  class="btn btn-danger btn-delete-account"
+                  (click)="confirmDeleteAccount()"
+                >
+                  <i class="ti ti-user-minus"></i> Delete Account
                 </button>
               </div>
             </div>
@@ -39,7 +54,11 @@
 <div class="container">
   <div class="col-12 text-center">
     <h2 class="section-title">
-      <span>{{ _auth.isLoggedIn() && _auth.getAuthor().id === author?._id ? 'My blogs' : 'His/Her blogs' }}</span>
+      <span>{{
+        _auth.isLoggedIn() && _auth.getAuthor().id === author?._id
+          ? "My blogs"
+          : "His/Her blogs"
+      }}</span>
     </h2>
   </div>
   <div class="row gy-5 gx-4 g-xl-5">
@@ -53,9 +72,9 @@
           >
             <div class="post-image position-relative blog-image-container">
               <img
-                class="w-100 h-auto rounded blog-image"
+                class="rounded blog-image"
                 [src]="'http://127.0.0.1:3000/getimage/' + item.image"
-                alt="The AGI hype train is running out of steam"
+                [alt]="item.title"
                 width="970"
                 height="500"
               />
@@ -88,11 +107,152 @@
               </ul>
             </li>
           </ul>
+          <!-- Add update/delete buttons -->
+          <div
+            class="mt-2"
+            *ngIf="_auth.isLoggedIn() && _auth.getAuthor().id === author?._id"
+          >
+            <button
+              class="btn btn-sm btn-primary me-2"
+              [routerLink]="['/update', item._id]"
+            >
+              <i class="ti ti-edit"></i> Update
+            </button>
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="confirmDeleteArticle(item._id)"
+            >
+              <i class="ti ti-trash"></i> Delete
+            </button>
+          </div>
         </div>
       </article>
     </div>
     <div class="container" *ngIf="articles && articles.length === 0">
       <p>No articles found.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de confirmation de suppression -->
+<div
+  class="modal-backdrop fade show modal-backdrop-custom"
+  *ngIf="articleToDeleteId"
+  (click)="cancelDelete()"
+></div>
+<div
+  class="modal fade show"
+  tabindex="-1"
+  style="
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1050;
+  "
+  *ngIf="articleToDeleteId"
+  (click)="cancelDelete()"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div
+      class="modal-content modal-content-custom"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="modal-header modal-header-custom">
+        <h5 class="modal-title modal-title-custom">Confirmation</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          aria-label="Close"
+          (click)="cancelDelete()"
+        ></button>
+      </div>
+      <div class="modal-body modal-body-custom">
+        <i class="ti ti-help-circle modal-warning-icon"></i>
+        <p class="modal-question">
+          Are you sure you want to delete this article?
+        </p>
+        <p class="modal-warning-text">This action cannot be undone.</p>
+      </div>
+      <div class="modal-footer modal-footer-custom">
+        <button type="button" class="btn btn-cancel" (click)="cancelDelete()">
+          <i class="ti ti-x me-1"></i> Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-delete"
+          (click)="deleteArticleConfirmed()"
+        >
+          <i class="ti ti-trash me-1"></i> Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de confirmation de suppression de compte -->
+<div
+  class="modal-backdrop fade show modal-backdrop-custom"
+  *ngIf="accountToDelete"
+  (click)="cancelAccountDelete()"
+></div>
+<div
+  class="modal fade show"
+  tabindex="-1"
+  style="
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1050;
+  "
+  *ngIf="accountToDelete"
+  (click)="cancelAccountDelete()"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div
+      class="modal-content modal-content-custom"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="modal-header modal-header-custom">
+        <h5 class="modal-title modal-title-custom">Delete Account</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          aria-label="Close"
+          (click)="cancelAccountDelete()"
+        ></button>
+      </div>
+      <div class="modal-body modal-body-custom">
+        <i class="ti ti-alert-triangle modal-warning-icon"></i>
+        <p class="modal-question">
+          Are you sure you want to delete your account?
+        </p>
+        <p class="modal-warning-text">
+          This action cannot be undone. All your articles and data will be
+          permanently deleted.
+        </p>
+      </div>
+      <div class="modal-footer modal-footer-custom">
+        <button
+          type="button"
+          class="btn btn-cancel"
+          (click)="cancelAccountDelete()"
+        >
+          <i class="ti ti-x me-1"></i> Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-delete"
+          (click)="deleteAccountConfirmed()"
+        >
+          <i class="ti ti-trash me-1"></i> Delete Account
+        </button>
+      </div>
     </div>
   </div>
 </div>

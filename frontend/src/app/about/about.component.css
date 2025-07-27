@@ -1,0 +1,10 @@
+/* Styles pour les images de profil sur la page about */
+.profile-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+  border: 2px solid #f1f1f1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
