@@ -46,7 +46,6 @@ Ce projet inclut un script batch (`start-project.bat`) qui automatise l'installa
     git clone https://github.com/votre-utilisateur/votre-projet.git
     cd votre-projet
     ```
-
 2.  **Exécutez le script de démarrage :**
 
     Ouvrez un terminal et exécutez la commande suivante :
@@ -111,6 +110,3 @@ Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce proje
 4.  Pushez vers la branche (`git push origin feature/nouvelle-fonctionnalite`).
 5.  Ouvrez une Pull Request.
 
-## Licence
-
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` for plus de détails.
