@@ -66,20 +66,17 @@ Ce projet inclut un script batch (`start-project.bat`) qui automatise l'installa
 ## Structure du Projet
 
 ```
-.
-├── backend/                # Code source du backend (Node.js/Express)
-│   ├── config/
-│   ├── models/
-│   ├── routes/
-│   └── server.js
-├── frontend/               # Code source du frontend (Angular)
-│   └── src/
-│       ├── app/
-│       ├── assets/
-│       └── environments/
-├── .gitignore
-├── README.md
-└── start-project.bat
+Quilo-MEAN/
+├── backend/              # API Node.js/Express
+│   ├── models/           # Modèles MongoDB
+│   ├── routes/           # Routes API
+│   ├── controllers/      # Logique métier
+│   └── server.js         # Point d’entrée serveur
+├── frontend/             # Application Angular
+│   ├── src/app/          # Composants Angular
+│   ├── assets/           # Fichiers statiques
+│   └── environments/     # Configs d’environnement
+└── README.md             # Fichier de documentation
 ```
 
 ## Documentation de l'API
